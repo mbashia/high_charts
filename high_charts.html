@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Highcharts Bar Chart with Thinner Bars</title>
+  <!-- Include Highcharts library from CDN -->
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <!-- Include exporting module from CDN to enable exporting -->
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+</head>
+<body>
+
+<!-- Create a container for the chart -->
+<div id="container" style="width: 600px; height: 400px;"></div>
+
+<!-- JavaScript code to define and create the chart -->
+<script>
+  // Define chart configuration
+  const options = {
+    chart: {
+      type: 'bar'
+    },
+    title: {
+      text: 'Bar Chart with Thinner Bars'
+    },
+    xAxis: {
+      categories: ['18-20', '24-27', '28-31', '22-40']
+    },
+    yAxis: {
+      title: {
+        text: ''
+      },
+      stackLabels: {
+        enabled: true,
+        style: {
+          fontWeight: 'bold',
+          color: (Highcharts.defaultOptions.title.style && Highcharts.defaultOptions.title.style.color) || 'gray'
+        }
+      }
+    },
+    legend: {
+      reversed: true
+    },
+    plotOptions: {
+      series: {
+        stacking: 'normal',
+        pointWidth: 10 // Adjust the width of the bars here
+      }
+    },
+    series: [{
+      name: 'Female',
+      data: [100,200,300,400]
+    }, {
+      name: 'Male',
+      data: [100,200,300,400]
+    }]
+  };
+
+  // Create the chart
+  const chart = Highcharts.chart('container', options);
+</script>
+
+</body>
+</html>
